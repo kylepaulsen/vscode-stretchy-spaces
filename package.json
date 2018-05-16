@@ -1,0 +1,56 @@
+{
+    "name": "stretchy-spaces",
+    "displayName": "stretchy-spaces",
+    "description": "Allows you to change how wide your spaces are.",
+    "version": "0.0.1",
+    "publisher": "kylepaulsen",
+    "engines": {
+        "vscode": "^1.11.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "Stretchy-Spaces configuration",
+            "properties": {
+                "stretchySpaces.targetIndentation": {
+                    "type": "number",
+                    "default": 4,
+                    "description": "How many spaces do you wish your indentation was? Default is 4. Must be 0 or above."
+                },
+                "stretchySpaces.includedLanguages": {
+                    "type": "array",
+                    "default": [],
+                    "description": "For which languages indent-rainbow should be activated. When empty will use for all languages."
+                },
+                "stretchySpaces.excludedLanguages": {
+                    "type": "array",
+                    "default": [],
+                    "description": "For which languages indent-rainbow should be deactivated. When left empty will ignore."
+                },
+                "stretchySpaces.updateDelay": {
+                    "type": "integer",
+                    "default": 100,
+                    "description": "The delay in ms until the editor gets updated."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
