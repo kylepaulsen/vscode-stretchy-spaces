@@ -5,6 +5,7 @@ const vscode = require('vscode');
 function activate(context) {
     // Create a decorator types that we use to decorate indent levels
     let timeout = null;
+    let enabled = true;
     let currentLanguageId = null;
     let activeEditor = vscode.window.activeTextEditor;
 
@@ -37,6 +38,22 @@ function activate(context) {
         }
     }, null, context.subscriptions);
 
+    vscode.commands.registerCommand('stretchySpaces.disable', () => {
+        if (enabled) {
+            enabled = false;
+            clearDecorations();
+        }
+    });
+
+    vscode.commands.registerCommand('stretchySpaces.enable', () => {
+        if (!enabled) {
+            enabled = true;
+            if (activeEditor && checkLanguage()) {
+                triggerUpdateDecorations();
+            }
+        }
+    });
+
     function checkLanguage() {
         if (activeEditor) {
             if (currentLanguageId !== activeEditor.document.languageId) {
@@ -59,13 +76,16 @@ function activate(context) {
     }
 
     function clearDecorations() {
-        if (currentIndentDecorationType) {
+        if (activeEditor && currentIndentDecorationType) {
             activeEditor.setDecorations(currentIndentDecorationType, []);
             currentIndentDecorationType = null;
         }
     }
 
     function triggerUpdateDecorations() {
+        if (!enabled) {
+            return;
+        }
         if (timeout) {
             clearTimeout(timeout);
         }
@@ -74,9 +94,12 @@ function activate(context) {
     }
 
     function updateDecorations() {
+        if (!activeEditor || !enabled) {
+            return;
+        }
         const targetIndentation = vscode.workspace.getConfiguration('stretchySpaces').targetIndentation;
         const indentFactor = targetIndentation / activeEditor.options.tabSize;
-        if (!activeEditor || !activeEditor.options.insertSpaces || indentFactor === 1) {
+        if (!activeEditor.options.insertSpaces || indentFactor === 1) {
             return;
         }
         const decorationRanges = [];

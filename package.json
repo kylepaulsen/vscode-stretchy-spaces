@@ -1,11 +1,23 @@
 {
     "name": "stretchy-spaces",
     "displayName": "stretchy-spaces",
-    "description": "Allows you to change how wide your spaces are.",
+    "description": "Allows you to change how wide your indentation spaces are.",
     "version": "0.0.1",
     "publisher": "kylepaulsen",
+    "author": {
+        "name": "Kyle Paulsen"
+    },
+    "icon": "icon.png",
+    "license": "MIT",
     "engines": {
         "vscode": "^1.11.0"
+    },
+    "repository": {
+        "url": "https://github.com/kylepaulsen/vscode-stretchy-spaces.git",
+        "type": "git"
+    },
+    "bugs": {
+        "url": "https://github.com/kylepaulsen/vscode-stretchy-spaces/issues"
     },
     "categories": [
         "Other"
@@ -40,7 +52,16 @@
                     "description": "The delay in ms until the editor gets updated."
                 }
             }
-        }
+        },
+        "commands": [{
+            "command": "stretchySpaces.disable",
+            "title": "Disable",
+            "category": "Stretchy Spaces"
+        }, {
+            "command": "stretchySpaces.enable",
+            "title": "Enable",
+            "category": "Stretchy Spaces"
+        }]
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
