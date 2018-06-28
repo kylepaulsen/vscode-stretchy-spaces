@@ -17,16 +17,16 @@ Although you can just use it as it is there is the possibility to configure some
 
 ```
   // How many spaces do you wish the indentation was? The extension will *try* to match this.
-  "strechySpaces.targetIndentation": 4
+  "stretchySpaces.targetIndentation": 4
 
   // For which languages indent-rainbow should be activated (if empty it means all).
-  "strechySpaces.includedLanguages": [] // for example ["nim", "nims", "python"]
+  "stretchySpaces.includedLanguages": [] // for example ["nim", "nims", "python"]
 
   // For which languages indent-rainbow should be deactivated (if empty it means none).
-  "strechySpaces.excludedLanguages": [] // for example ["plaintext"]
+  "stretchySpaces.excludedLanguages": [] // for example ["plaintext"]
 
   // The delay in ms until the editor gets updated.
-  "strechySpaces.updateDelay": 100 // 10 makes it super fast but may cost more resources
+  "stretchySpaces.updateDelay": 100 // 10 makes it super fast but may cost more resources
 ```
 
 *Notice: Defining both `includedLanguages` and `excludedLanguages` does not make much sense. Use one of both!*
