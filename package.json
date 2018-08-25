@@ -2,7 +2,7 @@
     "name": "stretchy-spaces",
     "displayName": "stretchy-spaces",
     "description": "Allows you to change how wide your indentation spaces are.",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "publisher": "kylepaulsen",
     "author": {
         "name": "Kyle Paulsen"
@@ -53,15 +53,18 @@
                 }
             }
         },
-        "commands": [{
-            "command": "stretchySpaces.disable",
-            "title": "Disable",
-            "category": "Stretchy Spaces"
-        }, {
-            "command": "stretchySpaces.enable",
-            "title": "Enable",
-            "category": "Stretchy Spaces"
-        }]
+        "commands": [
+            {
+                "command": "stretchySpaces.disable",
+                "title": "Disable",
+                "category": "Stretchy Spaces"
+            },
+            {
+                "command": "stretchySpaces.enable",
+                "title": "Enable",
+                "category": "Stretchy Spaces"
+            }
+        ]
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",

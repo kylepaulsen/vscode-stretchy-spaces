@@ -1,4 +1,4 @@
-# Strechy Spaces
+# Stretchy Spaces
 
 Allows you to change how wide your indentation spaces are.
 
