@@ -39,12 +39,12 @@
                 "stretchySpaces.includedLanguages": {
                     "type": "array",
                     "default": [],
-                    "description": "For which languages indent-rainbow should be activated. When empty will use for all languages."
+                    "description": "For which languages Stretchy Spaces should be activated. When empty will use for all languages."
                 },
                 "stretchySpaces.excludedLanguages": {
                     "type": "array",
                     "default": [],
-                    "description": "For which languages indent-rainbow should be deactivated. When left empty will ignore."
+                    "description": "For which languages Stretchy Spaces should be deactivated. When left empty will ignore."
                 },
                 "stretchySpaces.updateDelay": {
                     "type": "integer",
