@@ -39,6 +39,15 @@ Get to the Command Palette and then you can run:
 
 `Stretchy Spaces: Enable` - to enable the extension within the current running vscode instance.
 
+## Guides
+
+If you have indent guides enabled, they will still appear at the unadjusted locations. Either disable them:
+
+```js
+"editor.renderIndentGuides": false
+```
+
+Or install the [Guides](https://marketplace.visualstudio.com/itemdetails?itemName=spywhere.guides) extension to replace them with ones that are compatible with this extension.
 
 ## Other Info
 
