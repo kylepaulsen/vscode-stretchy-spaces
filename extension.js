@@ -107,8 +107,12 @@ function activate(context) {
         const text = activeEditor.document.getText();
 
         if (!currentIndentDecorationType) {
+            // 4 spaces rendered as 2, or 50% less: -0.5ch
+            // 2 spaces rendered as 4, or 100% more: 1ch
+            // current + percentChange × current = target
+            const percentChange = (targetIndentation - activeEditor.options.tabSize) / activeEditor.options.tabSize;
             currentIndentDecorationType = vscode.window.createTextEditorDecorationType({
-                letterSpacing: 8 * indentFactor - 8 + 'px'
+                letterSpacing: percentChange + 'ch' // https://css-tricks.com/the-lengths-of-css/#ch
             });
         }
 
