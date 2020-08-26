@@ -103,7 +103,7 @@ function activate(context) {
             return;
         }
         const decorationRanges = [];
-        const regEx = /^ +/gm;
+        const regEx = /^ +(?!\*)/gm; // Spaces from the start of the line until before the space before a *, to preserve JSDoc-style comments alignment
         const text = activeEditor.document.getText();
 
         if (!currentIndentDecorationType) {
