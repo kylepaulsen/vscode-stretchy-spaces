@@ -98,8 +98,7 @@ function activate(context) {
             return;
         }
         const targetIndentation = vscode.workspace.getConfiguration('stretchySpaces').targetIndentation;
-        const indentFactor = targetIndentation / activeEditor.options.tabSize;
-        if (!activeEditor.options.insertSpaces || indentFactor === 1) {
+        if (!activeEditor.options.insertSpaces || targetIndentation === activeEditor.options.tabSize) {
             return;
         }
         const decorationRanges = [];
