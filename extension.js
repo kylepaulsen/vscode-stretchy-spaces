@@ -103,7 +103,12 @@ function activate(context) {
             return;
         }
         const decorationRanges = [];
-        const regEx = /^ +(?!\*)/gm; // Spaces from the start of the line until before the space before a *, to preserve JSDoc-style comments alignment
+        let regEx;
+        if (vscode.workspace.getConfiguration('stretchySpaces').alignAsterisks) {
+            regEx = /^ +(?!\*)/gm; // Spaces from the start of the line until before the space before a *, to preserve JSDoc-style comments alignment
+        } else {
+            regEx = /^ +/gm;
+        }
         const text = activeEditor.document.getText();
 
         if (!currentIndentDecorationType) {

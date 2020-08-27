@@ -46,6 +46,11 @@
                     "default": [],
                     "description": "For which languages Stretchy Spaces should be deactivated. When left empty will ignore."
                 },
+                "stretchySpaces.alignAsterisks": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Leave at normal width a space before an asterisk in an indentation, to preserve the alignment of the asterisks in /* ... */ comments where each line begins with an asterisk."
+                },
                 "stretchySpaces.updateDelay": {
                     "type": "integer",
                     "default": 100,
