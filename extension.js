@@ -104,7 +104,9 @@ function activate(context) {
         const decorationRanges = [];
         let regEx;
         if (vscode.workspace.getConfiguration('stretchySpaces').alignAsterisks) {
-            regEx = /^ +(?!\*)/gm; // Spaces from the start of the line until before the space before a *, to preserve JSDoc-style comments alignment
+             // Spaces from the start of the line until before the space before a *,
+             // to preserve JSDoc-style comments alignment
+            regEx = /^ +(?!\*)/gm;
         } else {
             regEx = /^ +/gm;
         }

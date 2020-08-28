@@ -25,6 +25,9 @@ Although you can just use it as it is there is the possibility to configure some
   // For which languages Stretchy Spaces should be deactivated (if empty it means none).
   "stretchySpaces.excludedLanguages": [] // for example ["plaintext"]
 
+  // Try to align asterisks in the same column to preserve JSDoc-style comment alignment.
+  "stretchySpaces.alignAsterisks": true
+
   // The delay in ms until the editor gets updated.
   "stretchySpaces.updateDelay": 100 // 10 makes it super fast but may cost more resources
 ```
