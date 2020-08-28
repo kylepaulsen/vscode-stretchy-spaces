@@ -98,17 +98,25 @@ function activate(context) {
             return;
         }
         const targetIndentation = vscode.workspace.getConfiguration('stretchySpaces').targetIndentation;
-        const indentFactor = targetIndentation / activeEditor.options.tabSize;
-        if (!activeEditor.options.insertSpaces || indentFactor === 1) {
+        if (!activeEditor.options.insertSpaces || targetIndentation === activeEditor.options.tabSize) {
             return;
         }
         const decorationRanges = [];
-        const regEx = /^ +/gm;
+        let regEx;
+        if (vscode.workspace.getConfiguration('stretchySpaces').alignAsterisks) {
+            regEx = /^ +(?!\*)/gm; // Spaces from the start of the line until before the space before a *, to preserve JSDoc-style comments alignment
+        } else {
+            regEx = /^ +/gm;
+        }
         const text = activeEditor.document.getText();
 
         if (!currentIndentDecorationType) {
+            // 4 spaces rendered as 2, or 50% less: -0.5ch
+            // 2 spaces rendered as 4, or 100% more: 1ch
+            // current + percentChange × current = target
+            const percentChange = (targetIndentation - activeEditor.options.tabSize) / activeEditor.options.tabSize;
             currentIndentDecorationType = vscode.window.createTextEditorDecorationType({
-                letterSpacing: 8 * indentFactor - 8 + 'px'
+                letterSpacing: percentChange + 'ch' // https://css-tricks.com/the-lengths-of-css/#ch
             });
         }
 
